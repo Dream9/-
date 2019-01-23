@@ -299,10 +299,7 @@ def highPassEnhance(image,d,e):
     #正反傅里叶变换
     new_img=np.abs(np.fft.ifft2(np.fft.ifftshift(fshift*d_matrix)))
     return new_img
-    
-    
-    
-    
+ 
 plt.figure(7)
 out42=highPassEnhance(img2,10,0.7)
 out43=GaussianHighFilter(img2,2)
@@ -326,20 +323,10 @@ def imgGaussian(sigma):
     return gaussian_mat
 #均值滤波   调用入口
 def imgAverageFilter(image, kernel):
-    '''
-    :param image: 图片矩阵
-    :param kernel: 滤波窗口
-    :return:均值滤波后的矩阵
-    '''
     return imgConvolve(image, kernel) * (1.0 / kernel.size)
     
     
 def imgConvolve(image, kernel):
-    '''
-    :param image: 图片矩阵
-    :param kernel: 滤波窗口
-    :return:卷积后的矩阵
-    '''
     img_h = int(image.shape[0])
     img_w = int(image.shape[1])
     kernel_h = int(kernel.shape[0])
@@ -364,9 +351,7 @@ def imgConvolve(image, kernel):
                 np.sum(img_padding[i - padding_h:i + padding_h + 1, j - padding_w:j + padding_w + 1] * kernel))
 
     return image_convolve
-#调用方法：
-
-    
+ 
 plt.figure(8)
 img2_2 = imgAverageFilter(img2, imgGaussian(3))
 plt.imshow(img2_2,cmap='gray')
